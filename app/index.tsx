@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, SafeAreaView, FlatList} from 'react-native';
 import {useQuery, gql} from '@apollo/client';
+import {AllStarshipsData} from './types/starships';
 
 const GET_STARSHIPS = gql`
   query GetStarships {
@@ -13,6 +14,7 @@ const GET_STARSHIPS = gql`
         costInCredits
         length
         crew
+        id
         passengers
         maxAtmospheringSpeed
         hyperdriveRating
@@ -35,9 +37,7 @@ const GET_STARSHIPS = gql`
 `;
 
 const StarshipTracker = () => {
-  const {loading, error, data} = useQuery(GET_STARSHIPS);
-
-  console.log(JSON.stringify(data, null, 2));
+  const {loading, error, data} = useQuery<AllStarshipsData>(GET_STARSHIPS);
 
   return (
     <SafeAreaView>
@@ -45,7 +45,7 @@ const StarshipTracker = () => {
       <FlatList
         data={data?.allStarships?.starships}
         renderItem={({item}) => <Text>{item.name}</Text>}
-        keyExtractor={item => item.name}
+        keyExtractor={item => item.id}
       />
     </SafeAreaView>
   );
