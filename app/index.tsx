@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, FlatList} from 'react-native';
 import {useQuery, gql} from '@apollo/client';
 import {AllStarshipsData} from './types/starships';
+import requestLocationPermission from './permissions/RequestLocationPermission';
 
 const GET_STARSHIPS = gql`
   query GetStarships {
@@ -37,7 +38,19 @@ const GET_STARSHIPS = gql`
 `;
 
 const StarshipTracker = () => {
+  const [hasLocationPermission, setHasLocationPermission] =
+    useState<boolean>(false);
   const {loading, error, data} = useQuery<AllStarshipsData>(GET_STARSHIPS);
+  console.log('hasLocationPermission', hasLocationPermission);
+
+  const handleLocationPermission = async () => {
+    const hasPermission = await requestLocationPermission();
+    setHasLocationPermission(hasPermission);
+  };
+
+  useEffect(() => {
+    handleLocationPermission();
+  }, []);
 
   return (
     <SafeAreaView>
