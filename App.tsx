@@ -6,15 +6,12 @@
  */
 
 import React from 'react';
-import {useColorScheme} from 'react-native';
 import {ApolloProvider} from '@apollo/client';
 
 import client from './app/config/ApolloClient';
 import StarshipTracker from './app/Index';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <ApolloProvider client={client}>
       <StarshipTracker />

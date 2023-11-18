@@ -1,4 +1,4 @@
-interface Starship {
+export interface Starship {
   __typename: string;
   id: string;
   name: string;
