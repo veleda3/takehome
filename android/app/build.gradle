@@ -50,6 +50,11 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 }
 
+// enable hermes per assignment requirements
+project.ext.react = [
+    enableHermes: true,
+]
+
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
@@ -73,13 +78,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.takehome"
+    namespace "dev.takehome"
     defaultConfig {
-        applicationId "com.takehome"
+        applicationId "dev.takehome"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
     signingConfigs {
         debug {
