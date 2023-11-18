@@ -9,7 +9,7 @@ import React from 'react';
 import {ApolloProvider} from '@apollo/client';
 
 import client from './app/config/ApolloClient';
-import StarshipTracker from './app/Index';
+import StarshipTracker from './app/index';
 
 function App(): JSX.Element {
   return (
