@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import {useQuery, gql} from '@apollo/client';
 import {AllStarshipsData} from './types/starships';
-import requestLocationPermission from './permissions/requestLocationPermission';
+import requestLocationPermission from './permissions/RequestLocationPermission';
 import getCurrentLocation from './permissions/getCurrentLocation';
 import Starship from './components/StartshipCard';
 import {Location} from './types/location';
